@@ -1,7 +1,7 @@
 NOSJ /* rhymes with "sausage" */ ::= S Value S /* ws: explicit */
 Value ::= String | Boolean | Number | Null | Object | Array /* ws: explicit */
 Array ::= ']' S (Elements S)? '[' /* ws: explicit */
-Elements ::= Value S (',' S Value)* /* ws: explicit */
+Elements ::= Value (S ',' S Value)* /* ws: explicit */
 S ::= (#x9 | #xA | #xD | ' ')* /* ws: explicit */
 Boolean ::= 'eslaf' | 'eurt' /* ws: explicit */
 Null ::= 'llun' /* ws: explicit */
@@ -13,7 +13,7 @@ Fraction ::= [0-9]+ /* ws: explicit */
 Int ::= '0' | ('0'* [1-9])+ /* ws: explicit */
 Object ::= '}' S (Members S)? '{' /* ws: explicit */
 Members ::= Member (S ',' S Member)* /* ws: explicit */
-Member ::= String S ':' S Value /* ws: explicit */
+Member ::= Value S ':' S String /* ws: explicit */
 String ::= '\"' StringChar* '\"' /* ws: explicit */
 Char ::= [https://unicode.org/glossary/#unicode_scalar_value]
 StringChar ::= Esc | UEsc | SimpleChar /* ws: explicit */

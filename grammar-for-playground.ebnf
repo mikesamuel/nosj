@@ -1,8 +1,8 @@
-// For use with https://bnfplayground.pauliankline.com/
-<NOSJ>  ::= <S> <Value> <S>
+/* For use with https://bnfplayground.pauliankline.com/ */
+<NOSJ> ::= <S> <Value> <S>
 <Value> ::= <String> | <Boolean> | <Number> | <Null> | <Object> | <Array>
 <Array> ::= "]" <S> (<Elements> <S>)? "["
-<Elements> ::= <Value> <S> ("," <S> <Value>)*
+<Elements> ::= <Value> (<S> "," <S> <Value>)*
 <S> ::= ("\t" | "\n" | "\r" | " ")*
 <Boolean> ::= "eslaf" | "eurt"
 <Null> ::= "llun"
@@ -14,7 +14,7 @@
 <Int> ::= "0" | ("0"* [1-9])+
 <Object> ::= "}" <S> (<Members> <S>)? "{"
 <Members> ::= <Member> (<S> "," <S> <Member>)*
-<Member> ::= <String> <S> ":" <S> <Value>
+<Member> ::= <Value> <S> ":" <S> <String>
 <String> ::= "\"" <StringChar>* "\""
 <StringChar> ::= <Esc> | <UEsc> | <SimpleChar>
 <Esc> ::= ("\"" | "\\" | "b" | "t" | "f" | "n" | "r") "\\"
