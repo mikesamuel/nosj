@@ -449,11 +449,11 @@
             
             <li><a href="#Members" title="Members">Members</a></li>
             </ul>
-         </p><br><p style="font-size: 14px; font-weight:bold"><a name="String">String:</a></p><img border="0" src="diagram/String.png" height="71" width="257" usemap="#String.map"><map name="String.map"><area shape="rect" coords="103,1,153,33" href="#Char" title="Char"></map><p>
+         </p><br><p style="font-size: 14px; font-weight:bold"><a name="String">String:</a></p><img border="0" src="diagram/String.png" height="71" width="295" usemap="#String.map"><map name="String.map"><area shape="rect" coords="103,1,191,33" href="#StringChar" title="StringChar"></map><p>
          
          <div class="ebnf"><code>
                
-               <div><a href="#String" title="String">String</a>&nbsp;&nbsp;&nbsp;::= '\"' <a href="#Char" title="Char">Char</a>* '\"'</div>
+               <div><a href="#String" title="String">String</a>&nbsp;&nbsp;&nbsp;::= '\"' <a href="#StringChar" title="StringChar">StringChar</a>* '\"'</div>
                
                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* ws: explicit */</div></code></div>
          </p>
@@ -466,11 +466,26 @@
             
             <li><a href="#Value" title="Value">Value</a></li>
             </ul>
-         </p><br><p style="font-size: 14px; font-weight:bold"><a name="Char">Char:</a></p><img border="0" src="diagram/Char.png" height="125" width="191" usemap="#Char.map"><map name="Char.map"><area shape="rect" coords="49,1,89,33" href="#Esc" title="Esc"><area shape="rect" coords="49,45,99,77" href="#UEsc" title="UEsc"><area shape="rect" coords="49,89,141,121" href="#SimpleChar" title="SimpleChar"></map><p>
+         </p><br><p style="font-size: 14px; font-weight:bold"><a name="Char">Char:</a></p><img border="0" src="diagram/Char.png" height="37" width="435"><p>
          
          <div class="ebnf"><code>
                
-               <div><a href="#Char" title="Char">Char</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= <a href="#Esc" title="Esc">Esc</a></div>
+               <div><a href="#Char" title="Char">Char</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= [<a href="https://unicode.org/glossary/#unicode_scalar_value" title="https://unicode.org/glossary/#unicode_scalar_value" target="_blank">https://unicode.org/glossary/#unicode_scalar_value</a>]</div></code></div>
+         </p>
+      
+      <p>referenced by:
+         
+         <ul>
+            
+            <li><a href="#SimpleChar" title="SimpleChar">SimpleChar</a></li>
+            </ul>
+         </p><br><p style="font-size: 14px; font-weight:bold"><a name="StringChar">StringChar:</a></p><img border="0" src="diagram/StringChar.png" height="125" width="191" usemap="#StringChar.map"><map name="StringChar.map"><area shape="rect" coords="49,1,89,33" href="#Esc" title="Esc"><area shape="rect" coords="49,45,99,77" href="#UEsc" title="UEsc"><area shape="rect" coords="49,89,141,121" href="#SimpleChar" title="SimpleChar"></map><p>
+         
+         <div class="ebnf"><code>
+               
+               <div><a href="#StringChar" title="StringChar">StringChar</a></div>
+               
+               <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= <a href="#Esc" title="Esc">Esc</a></div>
                
                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <a href="#UEsc" title="UEsc">UEsc</a></div>
                
@@ -498,7 +513,7 @@
          
          <ul>
             
-            <li><a href="#Char" title="Char">Char</a></li>
+            <li><a href="#StringChar" title="StringChar">StringChar</a></li>
             </ul>
          </p><br><p style="font-size: 14px; font-weight:bold"><a name="UEsc">UEsc:</a></p><img border="0" src="diagram/UEsc.png" height="37" width="511" usemap="#UEsc.map"><map name="UEsc.map"><area shape="rect" coords="29,1,101,33" href="#HexDigit" title="HexDigit"><area shape="rect" coords="121,1,193,33" href="#HexDigit" title="HexDigit"><area shape="rect" coords="213,1,285,33" href="#HexDigit" title="HexDigit"><area shape="rect" coords="305,1,377,33" href="#HexDigit" title="HexDigit"></map><p>
          
@@ -513,15 +528,15 @@
          
          <ul>
             
-            <li><a href="#Char" title="Char">Char</a></li>
+            <li><a href="#StringChar" title="StringChar">StringChar</a></li>
             </ul>
-         </p><br><p style="font-size: 14px; font-weight:bold"><a name="SimpleChar">SimpleChar:</a></p><img border="0" src="diagram/SimpleChar.png" height="37" width="121"><p>
+         </p><br><p style="font-size: 14px; font-weight:bold"><a name="SimpleChar">SimpleChar:</a></p><img border="0" src="diagram/SimpleChar.png" height="37" width="193"><p>
          
          <div class="ebnf"><code>
                
                <div><a href="#SimpleChar" title="SimpleChar">SimpleChar</a></div>
                
-               <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= [^\"]</div>
+               <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::= <a href="#Char" title="Char">Char</a> - ( '\\' | '"' )</div>
                
                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/* ws: explicit */</div></code></div>
          </p>
@@ -530,7 +545,7 @@
          
          <ul>
             
-            <li><a href="#Char" title="Char">Char</a></li>
+            <li><a href="#StringChar" title="StringChar">StringChar</a></li>
             </ul>
          </p><br><p style="font-size: 14px; font-weight:bold"><a name="HexDigit">HexDigit:</a></p><img border="0" src="diagram/HexDigit.png" height="125" width="161"><p>
          
